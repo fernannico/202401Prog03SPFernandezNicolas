@@ -1,0 +1,179 @@
+<!--
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>intento 2P Labo3</title>
+    <style>
+        .form-container {
+            background-color: rgb(133, 191, 178);
+            width: 100% fit-content;
+            margin: auto;
+            border-radius: 50px; 
+            border: 5px solid black;
+            text-align: center;
+        } 
+
+        table {
+            margin: 20px;
+            padding: 5px;
+        }
+
+        table, th, td {
+            border: 2px solid black;
+        }
+
+        th {
+            background-color: grey;
+        }
+        td {
+            background-color: rgb(187, 185, 106);
+        }
+
+        button {
+            background-color: grey;
+            color: rgb(0, 0, 0);
+            font-weight: bold;
+            /* margin: 1px; */
+            cursor: pointer;
+        }
+
+        button:hover
+        {
+            background-color: lightblue;
+        }
+
+        #btnAgregar, #btnAceptar {
+            background-color: green;
+        }
+
+        #btnCancelar{
+            background-color: black;
+            color: white;
+        }
+
+        .botonModificar{
+            background-color: orange;
+        }
+
+        .botonEliminar{
+            background-color: red;
+        }
+
+        .spinnerContainer
+        {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .spinner
+        {
+            border: 5px solid black;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            border-left-color: red;
+
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin
+        {
+            0%
+            {transform: rotate(0deg);}
+
+            100%
+            {transform: rotate(360deg);}
+        }
+    </style>
+</head>
+<body style="display: flex;">
+    <div class="spinnerContainer">
+        <div id="spinner" class="spinner"></div>
+    </div>
+
+    <div class="form-container">
+        <!-- tabla inicial-->
+        <div id="formularioLista">
+            <h1 >Form Datos</h1>
+
+            <label >Mostrar Columnas:</label></br>
+        
+            <label for="checkboxId"> ID</label> 
+            <input type="checkbox" id="checkboxId" name="checkboxId" onclick="ocultarFila(0)" checked>
+
+            <label for="checkboxNombre">| Nombre</label> 
+            <input type="checkbox" id="checkboxNombre" name="checkboxNombre" onclick="ocultarFila(1)" checked>
+            
+            <label for="checkboxApellido">| Apellido</label>
+            <input type="checkbox" id="checkboxAnoFabApellido" name="checkboxApellido" onclick="ocultarFila(2)"checked>
+            
+            <label for="checkboxFechaNacimiento">| FechaNacimiento</label>
+            <input type="checkbox" id="checkboxFechaNacimiento" name="checkboxFechaNacimiento" onclick="ocultarFila(3)"checked>
+            
+            <label for="checkboxDni">| DNI</label>
+            <input type="checkbox" id="checkboxDni" name="checkboxDni" onclick="ocultarFila(4)"checked>
+                                        
+            <label for="checkboxPaisOrigen">| País de Origen</label>
+            <input type="checkbox" id="checkboxPaisOrigen" name="checkboxPaisOrigen" onclick="ocultarFila(5)"checked>
+
+            <table id="tablaPersonas">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Fecha de Nacimiento</th>
+                        <th>DNI</th>
+                        <th>País de Origen</th>
+                        <th>Modificar/Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                </tbody>
+            </table>
+            <button id="btnAgregar">Agregar Elemento</button>
+        </div>
+
+        <!-- form ABM -->
+        <div class="abmContainer">
+            <div id="formularioAbm" class="abmForm" style="display: none;">
+                <h1>Formulario ABM</h1>
+
+                <p>ID: <input type="text" id="abmId" readonly></p>
+                <p>Nombre: <input type="text" id="abmNombre" placeholder="Nombre"></p>
+                <p>Apellido: <input type="text" id="abmApellido" placeholder="Apellido"></p>
+                <p>Fecha de Nacimiento: <input type="number" id="abmFechaNacimiento" placeholder="Fecha de Nacimiento"></p>
+                <p>Tipo:
+                    <select id="selectTipo">
+                        <option value="Ciudadano">Ciudadano</option>
+                        <option value="Extranjero">Extranjero</option>
+                    </select>
+                </p>
+
+                <div id="ciudadano">
+                    <p>DNI: <input type="number" id="abmDni" placeholder="DNI"></p>
+                </div>
+
+                <div id="extranjero">
+                    <p>País de Origen: <input type="text" id="abmPaisOrigen" placeholder="País de Origen"></p>
+                </div>
+
+                <button type="button" id="btnAceptar">Aceptar</button>
+                <button type="button" id="btnCancelar">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>
