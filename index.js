@@ -309,7 +309,9 @@ function agregarPersona(nuevaPersona) {
             nuevaPersona.id = data.id;
             ListaPersonas.push(nuevaPersona);
 
+            ocultarSpinner(); 
             ocultarAbm();
+
             actualizarTabla();
 
             resolve(); // Resolvemos la promesa sin ningún valor adicional
@@ -317,7 +319,12 @@ function agregarPersona(nuevaPersona) {
             console.error("Error al agregar persona:", error);
             alert("Error al agregar persona."+ error.message);
             reject(error); // Rechazamos la promesa con el error
+            ocultarSpinner(); 
+            ocultarAbm();
+
         } finally {
+            ocultarAbm();
+
             ocultarSpinner();
         }
     });
@@ -440,7 +447,9 @@ $("btnAceptar").addEventListener("click", function(){
         
         BoolEliminacion = false;
         // actualizarTabla();
-        ocultarAbm();
+        ocultarSpinner(); 
+            ocultarAbm();
+
     } else {
         let nuevaPersona = {
             id: $("abmId").value,
@@ -455,6 +464,9 @@ $("btnAceptar").addEventListener("click", function(){
         if (nuevaPersona.nombre == "" || nuevaPersona.apellido == "" || nuevaPersona.fechaNacimiento < 0)
         {
             alert("Complete Nombre, Apellido o FechaNacimiento correctamente");
+            ocultarSpinner(); 
+            ocultarAbm();
+
             return;
         }
 
